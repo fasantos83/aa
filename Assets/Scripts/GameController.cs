@@ -10,8 +10,8 @@ public class GameController : MonoBehaviour {
 	public Spawner spawner;
 	public Animator animator;
 	public Text targetText;
-	public static int Target = 0;
-	public static int Level  = 0;
+	public int Target = 0;
+	public int Level  = 0;
 
 	private bool endGame = false;
 
@@ -19,6 +19,14 @@ public class GameController : MonoBehaviour {
 		Level = 1;
 		Target = 0;
 		SetNewParams();
+	}
+
+	public int GetLevel(){
+		return Level;
+	}
+
+	public int GetTarget(){
+		return Target;
 	}
 
 	private void enableInput(bool enable){

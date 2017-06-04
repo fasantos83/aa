@@ -10,8 +10,10 @@ public class Pin : MonoBehaviour {
 	public Text numberText;
 
 	private bool pinned = false;
+	private GameController gameController;
 
 	private void Start(){
+		gameController = FindObjectOfType<GameController>();
 		numberText.text = (Score.PinCount + 1).ToString();
 	}
 
@@ -26,11 +28,11 @@ public class Pin : MonoBehaviour {
 			transform.SetParent(other.transform);
 			pinned = true;
 			Score.PinCount++;
-			if (Score.PinCount == GameController.Target) {
-				FindObjectOfType<GameController>().Win();
+			if (Score.PinCount == gameController.GetTarget()) {
+				gameController.Win();
 			}
 		}else if(other.CompareTag("Pin")){
-			FindObjectOfType<GameController>().EndGame();
+			gameController.EndGame();
 		}
 			
 	}
